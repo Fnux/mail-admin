@@ -1,0 +1,23 @@
+<table class="u-full-width" %>
+   <thead>
+      <tr>
+         <th style="width:5%;">#</th>
+         <th style="width:75%;">Name</th>
+         <th style="width:20%;">Actions</th>
+      </tr>
+   </thead>
+   <tbody>
+      <% @domains.each do |domain| %>
+      <tr>
+         <td><%= domain.id %></td>
+         <td><%= domain.name %></td>
+         <td>
+            <a href="/domains/edit/<%= domain.id %>">Edit</a> /
+            <a href="/domains/delete/<%= domain.id %>">Delete</a>
+         </td>
+      </tr>
+      <% end %>
+   </tbody>
+</table>
+
+<a href="/domains/new" class="button u-full-width">Add a new domain &raquo;</a>

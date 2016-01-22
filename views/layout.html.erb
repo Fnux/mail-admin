@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Mail Admin</title>
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+   <link rel="stylesheet" href="/assets/normalize.css">
+   <link rel="stylesheet" href="/assets/skeletron.css">
+   <link rel="stylesheet" href="/assets/main.css">
+   <link rel="icon" type="image/png" href="/assets/icon.png">
+</head>
+<body>
+   <div id="header">
+      <nav class="navbar">
+         <div class="container">
+            <ul class="navbar-list">
+               <li class="navbar-item"><a class="navbar-link" href="/">Home</a></li>
+               <li class="navbar-item"><a class="navbar-link"  href="/domains">Domains</a></li>
+               <li class="navbar-item"><a class="navbar-link"  href="/users">Users</a></li>
+               <li class="navbar-item"><a class="navbar-link"  href="/aliases">Aliases</a></li>
+               <li class="navbar-item"><a class="navbar-link"  href="/logout">Logout &raquo;</a></li>
+            </ul>
+         </div>
+      </nav>
+   </div>
+   <div id="main-wrapper">
+      <%= yield %>
+   </div>
+   <div id="footer">
+      <p>
+         Copyright &copy; Fnux 2015
+         - <a href="http://hub.fnux.ch">hub.fnux.ch</a>
+         - <a href="mailto:hostmaster@fnux.ch">hostmaster@fnux.ch</a>
+         - <a href="https://git.fnux.ch/fnux-services/mail-admin.git" class="footer-link">Source code</a>
+      </p>
+   </div>
+</body>
+</html>

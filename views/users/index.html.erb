@@ -1,0 +1,23 @@
+<table class="u-full-width" %>
+   <thead>
+      <tr>
+         <th style="width:5%;">#</th>
+         <th style="width:75%;">Email Address</th>
+         <th style="width:20%;">Actions</th>
+      </tr>
+   </thead>
+   <tbody>
+      <% @users.each do |user| %>
+      <tr>
+         <td><%= user.id %></td>
+         <td><%= user.mail %></td>
+         <td>
+            <a href="/users/edit/<%= user.id %>">Edit</a> /
+            <a href="/users/delete/<%= user.id %>">Delete</a>
+         </td>
+      </tr>
+      <% end %>
+   </tbody>
+</table>
+
+<a href="/users/new" class="button u-full-width">Add a new user &raquo;</a>

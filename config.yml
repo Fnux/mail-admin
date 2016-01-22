@@ -1,0 +1,12 @@
+admin:
+   id: admin # admin user
+   password: lambda # admin password
+secret: fff000fff000fff000kjdsfljashflkjaf
+reloader: true
+database:
+   adapter: sqlite3
+   database: tmp/app.db
+   # if adapter setted to MySQL
+   user: blurps
+   password: blurps
+   server: blurps
