@@ -200,7 +200,7 @@ class MailAdmin < Sinatra::Base
       include DataMapper::Resource
       property :id, Serial
       property :mail, String
-      property :password, String
+      property :password, Text
       property :created_at, DateTime
       property :updated_at, DateTime
    end
