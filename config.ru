@@ -27,8 +27,7 @@ when "sqlite3"
    adapter = DataMapper::setup(:default, "sqlite3://#{Dir.pwd}/#{CONFIG['database']['database']}")
 when "mysql"
    adapter = DataMapper::setup(:default,
-   "mysql://#{CONFIG['database']['user']}:#{CONFIG['database']['password']}
-   @#{CONFIG['database']['server']}/#{CONFIG['database']['database']}")
+   "mysql://#{CONFIG['database']['user']}:#{CONFIG['database']['password']}@#{CONFIG['database']['server']}/#{CONFIG['database']['database']}")
 when "postgres"
    adapter = DataMapper::setup(:default, "postgres://#{CONFIG['database']['user']}:#{CONFIG['database']['password']}
    @#{CONFIG['database']['server']}/#{CONFIG['database']['database']}")
