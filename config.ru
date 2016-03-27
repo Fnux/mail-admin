@@ -21,17 +21,19 @@ use Rack::Session::Cookie, :key => 'session',
                            :secret => CONFIG['secret']
 
 # Connecting to the database
+
 case CONFIG['database']['adapter']
 when "sqlite3"
-   DataMapper::setup(:default, "sqlite3://#{Dir.pwd}/#{CONFIG['database']['database']}")
+   adapter = DataMapper::setup(:default, "sqlite3://#{Dir.pwd}/#{CONFIG['database']['database']}")
 when "mysql"
-   DataMapper::setup(:default,
+   adapter = DataMapper::setup(:default,
    "mysql://#{CONFIG['database']['user']}:#{CONFIG['database']['password']}
    @#{CONFIG['database']['server']}/#{CONFIG['database']['database']}")
 when "postgres"
-   DataMapper::setup(:default, "postgres://#{CONFIG['database']['user']}:#{CONFIG['database']['password']}
+   adapter = DataMapper::setup(:default, "postgres://#{CONFIG['database']['user']}:#{CONFIG['database']['password']}
    @#{CONFIG['database']['server']}/#{CONFIG['database']['database']}")
 end
+adapter.resource_naming_convention = DataMapper::NamingConventions::Resource::UnderscoredAndPluralizedWithoutModule
 
 # Set views directory
 set :views, settings.root + '/views'

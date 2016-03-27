@@ -4,7 +4,7 @@ class MailAdmin < Sinatra::Base
    before do
       protected! unless request.path_info.split('/')[1] == "login"
    end
-   
+
    #############
    #*** APP ***#
    #############
@@ -189,6 +189,7 @@ class MailAdmin < Sinatra::Base
    # Domain model
    class Domain
       include DataMapper::Resource
+      storage_names[:legacy] = 'domains'
       property :id, Serial
       property :name, String
       property :created_at, DateTime
@@ -198,6 +199,8 @@ class MailAdmin < Sinatra::Base
    # User model
    class User
       include DataMapper::Resource
+
+         storage_names[:legacy] = 'users'
       property :id, Serial
       property :mail, String
       property :password, Text
@@ -208,6 +211,8 @@ class MailAdmin < Sinatra::Base
    # Alias model
    class Alias
       include DataMapper::Resource
+
+         storage_names[:legacy] = 'aliases'
       property :id, Serial
       property :source, String
       property :destination, String
