@@ -10,6 +10,9 @@ class MailAdmin < Sinatra::Base
     #######
 
     get '/' do
+        @domains = Domain.all.count
+        @users = User.all.count
+        @aliases = Alias.all.count
         erb :'index', :layout => :layout
     end
 

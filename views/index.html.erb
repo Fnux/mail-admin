@@ -1,8 +1,15 @@
 <p>
-   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-   incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-   nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-   Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
-   eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-   sunt in culpa qui officia deserunt mollit anim id est laborum.
+   This webapp allows you to manage your mail server through a SQL database. Please
+   be careful with the values of the fields : there is actually no check on these.
+   Your mail server may not like incorrect values...
+   <br />
+   If you find any bug and/or want to improve this software, please
+   visit its git repo on <a href="https://github.com/Fnux/mail-admin)">GitHub</a>
+   or on <a href="https://git.fnux.ch/fnux-services/mail-admin)">Fnux's gogs instance </a>.
 </p>
+
+<ul>
+    <li>There is <%= @domains %> domain(s) registered.</li>
+    <li>There is <%= @users %> user(s) registered.</li>
+    <li>There is <%= @aliases %> aliase(s) registered.</li>
+</ul>
