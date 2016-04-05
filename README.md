@@ -11,7 +11,6 @@ It's just a stupid webapp writing into the followings fields of a database :
 | id         | id         | id          |
 | name       | mail       | source      |
 |            | password   | destination |
-| created_at | created_at | created_at  |
 
 ## configuration
 
