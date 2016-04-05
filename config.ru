@@ -30,27 +30,6 @@ when "postgres"
     DB = Sequel.connect("postgres://#{CONFIG['database']['user']}:#{CONFIG['database']['password']}@#{CONFIG['database']['server']}/#{CONFIG['database']['database']}")
 end
 
-# Create the tables is needed
-DB.create_table :domains do
-    primary_key :id
-    String :name
-    DateTime :created_at
-end
-
-DB.create_table :users do
-    primary_key :id
-    String :mail
-    Text :password
-    DateTime :created_at
-end
-
-DB.create_table :aliases do
-    primary_key :id
-    String :source
-    String :destination
-    DateTime :created_at
-end
-
 # Set views directory
 set :views, settings.root + '/views'
 

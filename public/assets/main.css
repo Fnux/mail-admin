@@ -1,8 +1,11 @@
-/* main.css */
+/**
+ * Main.css
+ */
 
 html {
    min-height: 100%;
 }
+
 body {
    position: relative;
    min-height: 100vh;
@@ -10,24 +13,40 @@ body {
    box-sizing: border-box;
 }
 
-h1 {
-   font-size: 40px;
-}
-h1 a {
-   text-decoration: none;
-}
-h2 {
-   font-size: 30px;
-}
-#container {
-   height:100%;
-}
-/* Header */
+
+/**
+ * Layout
+ */
+
 #header {
    width: 1000px;
    padding-top: 30px;
    margin: 0px auto 0px auto;
 }
+
+#content-wrapper {
+   max-width: 1000px;
+   margin: 15px auto  15px  auto;
+}
+
+#footer {
+   opacity: 0.5;
+   width: 100%;
+   position: absolute;
+   text-align: center;
+   bottom:0;
+   box-sizing: border-box;
+}
+
+#footer a {
+   color: inherit;
+   text-decoration: none;
+}
+
+/**
+ * Navbar
+ */
+
 .navbar {
    border-top-width: 0;
 }
@@ -69,11 +88,9 @@ h2 {
    color: #33C3F0;
 }
 
-/* Main container */
-#main-wrapper {
-   max-width: 1000px;
-   margin: 15px auto  15px  auto;
-}
+/**
+ * Login page 
+ */
 
 #login-wrapper {
    padding-top: 10%;
@@ -81,35 +98,43 @@ h2 {
    margin: 15px auto  15px  auto;
 }
 
-/* Footer */
-#footer {
-   opacity: 0.5;
-   width: 100%;
-   position: absolute;
-   text-align: center;
-   bottom:0;
-   box-sizing: border-box;
-}
-#footer a {
-   color: inherit;
-   text-decoration: none;
-}
-
-/* Various */
+/**
+ * Forms
+ */
 
 .form {
    overflow: hidden;
 }
+
 .form-ecart {
    margin-bottom:5px;
 }
+
+/**
+ * Titltes & typography
+ */
+
+h1 {
+   font-size: 40px;
+}
+
+h1 a {
+   text-decoration: none;
+}
+
+h2 {
+   font-size: 30px;
+}
+
 .post-title {
    margin-bottom:0px;
    margin-bottom: -5px;
 }
+
 .post-date {
    font-style: italic;
 }
+
 .post-content {
    margin-top:20px;
 }
