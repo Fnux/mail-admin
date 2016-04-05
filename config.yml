@@ -1,7 +1,7 @@
 admin:
    id: admin # admin user
    password: lambda # admin password
-secret: fff000fff000fff000kjdsfljashflkjaf
+secret: ffffffffffffffffffffffffffffffffffffffffffffffff
 reloader: true
 database:
    adapter: sqlite3

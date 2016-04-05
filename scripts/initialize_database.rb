@@ -1,24 +1,14 @@
-puts "**********************************"
-puts "[Mail-admin] Starting Web App..."
+#! /usr/bin/ruby
 
-# load dependencies
-require 'rubygems'
-require 'sinatra'
-require "yaml"
-require "sequel"
-#require 'digest/sha2'
+#
+# This script initialize the database by creating the necessary tables and fields
+#
+
+require 'yaml'
+require 'sequel'
 
 # load the config file
-CONFIG =  YAML.load_file('config.yml')
-
-# if "reloader: true"
-require "sinatra/reloader" if CONFIG['reloader']
-
-# Enable sessions
-use Rack::Session::Cookie, :key => 'session',
-:path => '/',
-:expire_after => 3600, # In seconds
-:secret => CONFIG['secret']
+CONFIG =  YAML.load_file('./config.yml')
 
 # Connecting to the database
 case CONFIG['database']['adapter']
@@ -28,9 +18,11 @@ when "mysql"
     DB = Sequel.connect("mysql://#{CONFIG['database']['user']}:#{CONFIG['database']['password']}@#{CONFIG['database']['server']}/#{CONFIG['database']['database']}")
 when "postgres"
     DB = Sequel.connect("postgres://#{CONFIG['database']['user']}:#{CONFIG['database']['password']}@#{CONFIG['database']['server']}/#{CONFIG['database']['database']}")
+when "memory"
+    DB = Sequel.sqlite
 end
 
-# Create the tables is needed
+# Create the tables & fields
 DB.create_table :domains do
     primary_key :id
     String :name
@@ -50,15 +42,3 @@ DB.create_table :aliases do
     String :destination
     DateTime :created_at
 end
-
-# Set views directory
-set :views, settings.root + '/views'
-
-# Render ERB files using ".html.erb" extensions (instead of ".erb")
-Tilt.register Tilt::ERBTemplate, 'html.erb'
-
-# Load the application (app.rb)
-require File.expand_path '../app.rb', __FILE__
-
-# Let's run this app :3
-run MailAdmin
