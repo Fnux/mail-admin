@@ -4,9 +4,9 @@ puts "[Mail-admin] Starting Web App..."
 # load dependencies
 require 'rubygems'
 require 'sinatra'
-require "yaml"
-require "sequel"
-#require 'digest/sha2'
+require 'sinatra/namespace'
+require 'yaml'
+require 'sequel'
 
 # load the config file
 CONFIG =  YAML.load_file('config.yml')
