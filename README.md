@@ -12,6 +12,8 @@ It's just a stupid webapp writing into the followings fields of a database :
 | name       | mail       | source      |
 |            | password   | destination |
 
+![screenshot](scrot.png)
+
 ## configuration
 
 The `config.yml` file allow you to configure some parameters.
