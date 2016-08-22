@@ -3,39 +3,48 @@
 #
 # This script initialize the database by creating the necessary tables and fields
 #
+print "Initializing database..."
 
-require 'yaml'
-require 'sequel'
+begin
+  require 'yaml'
+  require 'sequel'
 
-# load the config file
-CONFIG =  YAML.load_file('./config.yml')
+  # load the config file
+  CONFIG =  YAML.load_file('./config.yml')
 
-# Connecting to the database
-case CONFIG['database']['adapter']
-when "sqlite3"
+  # Connecting to the database
+  case CONFIG['database']['adapter']
+  when "sqlite3"
     DB = Sequel.connect("sqlite://#{Dir.pwd}/#{CONFIG['database']['database']}")
-when "mysql"
+  when "mysql"
     DB = Sequel.connect("mysql://#{CONFIG['database']['user']}:#{CONFIG['database']['password']}@#{CONFIG['database']['server']}/#{CONFIG['database']['database']}")
-when "postgres"
+  when "postgres"
     DB = Sequel.connect("postgres://#{CONFIG['database']['user']}:#{CONFIG['database']['password']}@#{CONFIG['database']['server']}/#{CONFIG['database']['database']}")
-when "memory"
+  when "memory"
     DB = Sequel.sqlite
-end
+  end
 
-# Create the tables & fields
-DB.create_table :domains do
-    primary_key :id
+  # Create the tables & fields
+  DB.create_table :domains do
+     primary_key :id
     String :name
-end
+  end
 
-DB.create_table :users do
+  DB.create_table :users do
     primary_key :id
     String :mail
     Text :password
-end
+  end
 
-DB.create_table :aliases do
+  DB.create_table :aliases do
     primary_key :id
     String :source
     String :destination
+  end
+
+  puts "OK!"
+rescue => e
+  puts "Failure!"
+  puts "Error during database initialization :"
+  puts e
 end

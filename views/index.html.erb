@@ -1,15 +1,12 @@
-<p>
-   This webapp allows you to manage your mail server through a SQL database. Please
-   be careful with the values of the fields : there is actually no check on these.
-   Your mail server may not like incorrect values...
-   <br />
-   If you find any bug and/or want to improve this software, please
-   visit its git repo on <a href="https://github.com/Fnux/mail-admin)">GitHub</a>
-   or on <a href="https://git.fnux.ch/fnux-services/mail-admin)">Fnux's gogs instance </a>.
-</p>
-
-<ul>
-    <li>There is <%= @domains %> domain(s) registered.</li>
-    <li>There is <%= @users %> user(s) registered.</li>
-    <li>There is <%= @aliases %> aliase(s) registered.</li>
-</ul>
+<div class="login-container">
+  <div class="login-form">
+    <form action="/login" method="post">
+      <input type="text" name="email" class="full" placeholder="Email" />
+      <input type="password" name="password" class="full" placeholder="Password" />
+      <button type="submit" class="full">Login &raquo;</button>
+    </form>
+  </div>
+  <div class="login-note">
+    <p>If there is anything wrong, please contact your system administrator.</p>
+  </div>
+</div>

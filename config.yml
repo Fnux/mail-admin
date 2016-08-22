@@ -1,6 +1,4 @@
-admin:
-   id: admin # admin user
-   password: lambda # admin password
+admins: fnux;sapin;lambda;a
 secret: ffffffffffffffffffffffffffffffffffffffffffffffff
 reloader: true
 database:

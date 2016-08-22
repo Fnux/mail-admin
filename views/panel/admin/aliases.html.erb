@@ -1,0 +1,33 @@
+<h2 style="margin-top:0">Manage Aliases - <a href="/panel/admin/">Back to admin index &crarr;</a></h2>
+
+<table class="full" >
+   <thead>
+      <tr>
+         <th style="width:5%;">#</th>
+         <th style="width:37.5%;">Source</th>
+         <th style="width:37.5%;">Destination</th>
+         <th style="width:20%;">Actions</th>
+      </tr>
+   </thead>
+   <tbody>
+      <% @aliases.each do |forward| %>
+      <tr>
+         <td><%= forward.id %></td>
+         <td><%= forward.source %></td>
+         <td><%= forward.destination %></td>
+         <td>
+            <a href="/panel/admin/aliases/edit/<%= forward.id %>">Edit</a> /
+            <a href="/panel/admin/aliases/destroy/<%= forward.id %>">Delete</a>
+         </td>
+      </tr>
+      <% end %>
+   </tbody>
+</table>
+
+<hr />
+
+<form action="/panel/admin/aliases/create" method="post">
+  <input type="text" name="source" class="" placeholder="Source" />
+  <input type="text" name="destination" class="" placeholder="Destination" />
+  <button type="submit" class="">New alias &raquo;</button>
+</form>

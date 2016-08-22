@@ -1,31 +1,29 @@
-/**
+/*
  * Main.css
  */
 
-html {
-   min-height: 100%;
+body{
+   font-family:"Sans-Serif";
+   font-size: 12px;
+   background:#FBFBFB;
+   width: 100%;
 }
 
-body {
-   position: relative;
-   min-height: 100vh;
-   padding-bottom: 50px;
-   box-sizing: border-box;
-}
-
-
-/**
- * Layout
- */
-
+/* Layout */
 #header {
-   width: 1000px;
+   width: 100%;
    padding-top: 30px;
+   margin-bottom: 10px;
+   text-align: center;
    margin: 0px auto 0px auto;
 }
 
 #content-wrapper {
-   max-width: 1000px;
+   border: 1px solid #e6e6e6;
+   padding: 10px;
+   color: #494949;
+   background-color: #ffffff;
+   width: 600px;
    margin: 15px auto  15px  auto;
 }
 
@@ -43,98 +41,60 @@ body {
    text-decoration: none;
 }
 
-/**
- * Navbar
- */
+/* Page-specific */
 
-.navbar {
-   border-top-width: 0;
-}
-.navbar, .navbar-spacer {
-   display: block;
-   width: 100%;
-   height: 6.5rem;
-   background: #fff;
-   z-index: 99;
-   border-top: 1px solid #eee;
-   border-bottom: 1px solid #eee;
-}
-.navbar-spacer {
-   display: none;
-}
-.navbar > .container {
-   width: 100%;
-}
-.navbar-list {
-   list-style: none;
-   margin-bottom: 0;
-}
-.navbar-item {
-   position: relative;
-   float: left;
-   margin-bottom: 0;
-}
-.navbar-link {
-   text-transform: uppercase;
-   font-size: 12px;
-   font-weight: 600;
-   letter-spacing: .2rem;
-   margin-right: 35px;
-   text-decoration: none;
-   line-height: 6.5rem;
-   color: #222;
-}
-.navbar-link.active {
-   color: #33C3F0;
+.login-container, .panel-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
 }
 
-/**
- * Login page 
- */
-
-#login-wrapper {
-   padding-top: 10%;
-   max-width: 600px;
-   margin: 15px auto  15px  auto;
+.login-form, .panel-form {
+  width:48%;
+  margin-right:2%;
 }
 
-/**
- * Forms
- */
-
-.form {
-   overflow: hidden;
+.login-note, .panel-note {
+  text-align:center;
+  width:48%;
+  margin-left:2%;
 }
 
-.form-ecart {
-   margin-bottom:5px;
+/* Forms */
+
+input {
+  margin-bottom:5px;
+  box-sizing:border-box;
 }
 
-/**
- * Titltes & typography
- */
+.full {
+  width:100%;
+}
+
+button, .button {
+  min-height:30px;
+  background-color: #FBFBFB;
+  border-radius:5px;
+  border: 1px solid #9D9D99;
+}
+
+.button {
+  padding-left: 6px;
+  padding-right:6px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  text-decoration:none;
+  color: inherit;
+}
+
+/* Various */
 
 h1 {
-   font-size: 40px;
+  font-size:24px;
 }
 
-h1 a {
-   text-decoration: none;
-}
-
-h2 {
-   font-size: 30px;
-}
-
-.post-title {
-   margin-bottom:0px;
-   margin-bottom: -5px;
-}
-
-.post-date {
-   font-style: italic;
-}
-
-.post-content {
-   margin-top:20px;
+th {
+  text-align:left;
 }

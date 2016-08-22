@@ -1,0 +1,19 @@
+<div class="panel-container">
+  <div class="panel-for[m">
+    <form action="/panel/password" method="post">
+      <input type="password" name="current-password" class="full" placeholder="Current password" />
+       <hr />
+      <input type="password" name="new-password-1" class="full" placeholder="New password" />
+      <input type="password" name="new-password-2" class="full" placeholder="New password" />
+      <button type="submit" class="full">Change my password &raquo;</button>
+    </form>
+  </div>
+  <div class="panel-note">
+    <p>You are authenticated as <i><%= @user.mail %></i>.</p>
+    <p>If there is anything wrong, please contact your system administrator.</p>
+    <a href="/logout" class="">Logout &raquo;</a>
+    <% if @admin %>
+    /  <a href="/panel/admin/" class="">Administration Panel &raquo;</a>
+    <% end %>
+  </div>
+</div>
