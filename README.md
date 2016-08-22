@@ -12,14 +12,12 @@ It's just a stupid webapp writing into the followings fields of a database :
 | name       | mail       | source      |
 |            | password   | destination |
 
-![screenshot](scrot.png)
-
 ## configuration
 
 The `config.yml` file allow you to configure some parameters.
 
 * **sinatra-reloader :** auto-reload the app if you modify the code. Useful for development. Requires the `sinatra-contrib` gem. [Documentation](http://www.sinatrarb.com/contrib/reloader.html).
-* **id & password :** the ID and the password of the user.
+* **admins :** admin users, separeted by `;`.
 * **secret :** used to encrypt the session cookie. **YOU MUST CHANGE IT**
 * **database parameters :** parameters required for you database. The adapter can me `sqlite3`, `pgsql` or `mysql`.
 
@@ -69,69 +67,3 @@ unicorn worker. Please take a look to
 
 *PS : `thin` or `unicorn` are both great. Passenger is way too heavy. It is also
 possible to deploy via `FastCGI`. Note that `unicorn` is packaged for Debian.*
-
-## Mail server configuration
-
-Here is the configuration I use on my mail servers.
-
-### Postfix (MTA)
-
-You'll need the `postfix-pgsql` or `postfix-mysql` package (Debian/Ubuntu).
-
-At the bottom of `/etc/postfix/mail.cf` **(don't forget to replace `ADAPTER` by `mysql` or `pgsql`)** :
-
-```
-# A list of all virtual domains serviced by this instance of postfix.
-virtual_mailbox_domains = ADAPTER:/etc/postfix/ADAPTER/virtual-domain-maps.cf
-
-# Look up the mailbox location based on the email address received.
-virtual_mailbox_maps = ADAPTER:/etc/postfix/ADAPTER/virtual-user-maps.cf
-
-# Any aliases that are supported by this system
-virtual_alias_maps = ADAPTER:/etc/postfix/ADAPTER/virtual-alias-maps.cf,hash:/etc/aliases
-```
-
-Then add and fill the following config files.
-
-In `/etc/postfix/ADAPTER/virtual-domain-maps.cf`.
-
-```
-user = db_user
-password = db_pwd
-dbname = db_name
-hosts = 127.0.0.1
-query = SELECT 1 FROM domains WHERE name = '%s';
-```
-
-In `/etc/postfix/ADAPTER/virtual-user-maps.cf`.
-
-```
-user = db_user
-password = db_pwd
-dbname = db_name
-hosts = 127.0.0.1
-query = SELECT 1 FROM users WHERE mail='%s';
-```
-
-In `/etc/postfix/ADAPTER/virtual-alias-maps.cf`.
-
-```
-user = db_user
-password = db_pwd
-dbname = db_name
-hosts = 127.0.0.1
-query = SELECT destination FROM aliases WHERE source='%s';
-```
-
-
-### Dovecot
-
-You'll need the `dovecot-pgsql` or `dovecot-mysql` package (Debian/Ubuntu).
-
-Please configure dovecot to use a SQL database (as explained in
-[this great tutorial on DigitalOcean](https://www.digitalocean.com/community/tutorials/how-to-configure-a-mail-server-using-postfix-dovecot-mysql-and-spamassassin) for example) and use the following query in
-    `dovecot-sql.conf.ext `.
-
-```
-password_query =  SELECT mail as user, password FROM users WHERE mail='%u';
-```
