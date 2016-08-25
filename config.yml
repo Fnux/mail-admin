@@ -1,4 +1,4 @@
-admins: fnux;sapin;lambda;a
+admins: fnux;sapin;lambda
 secret: ffffffffffffffffffffffffffffffffffffffffffffffff
 reloader: true
 database:
