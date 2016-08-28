@@ -37,7 +37,7 @@ sudo pacman -S ruby # Arch
 You just have to install the following :
 
 ```
-apt-get install ruby ruby-sinatra ruby-sequel # + adapter : ruby-sqlite3, ruby-mysql2, ruby-pg
+apt-get install ruby ruby-sinatra ruby-sinatra-contrib ruby-sequel # + adapter : ruby-sqlite3, ruby-mysql2, ruby-pg
 ```
 
 #### Using Rubygems (any distribution)
