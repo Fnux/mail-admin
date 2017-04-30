@@ -1,69 +1,43 @@
 # Mail-admin
 
-This is a simple mail server web interface, written in ruby using
-[sinatra](http://www.sinatrarb.com/). I actually use it with a `postfix` +
- `dovecot` setup.
+Simple mail server web interface, written in ruby using
+[sinatra](http://www.sinatrarb.com/).
 
 It's just a stupid webapp writing into the followings fields of a database :
 
-| Domains    | Users      |  Aliases    |
+| domains    | users      |  aliases    |
 |:----------:|:----------:|:-----------:|
 | id         | id         | id          |
 | name       | mail       | source      |
 |            | password   | destination |
 
-## configuration
+You can configure a few things in the `config.yml` file.
 
-The `config.yml` file allow you to configure some parameters.
-
-* **sinatra-reloader :** auto-reload the app if you modify the code. Useful for development. Requires the `sinatra-contrib` gem. [Documentation](http://www.sinatrarb.com/contrib/reloader.html).
-* **admins :** admin users, separeted by `;`.
-* **secret :** used to encrypt the session cookie. **YOU MUST CHANGE IT**
-* **database parameters :** parameters required for you database. The adapter can me `sqlite3`, `pgsql` or `mysql`.
-
-## Webapp Setup
-
-Obviously, you first need ruby.
+## Setup
 
 ```
-sudo apt-get install ruby # Debian, Ubuntu, etc.
-sudo dnf install ruby # Fedora
-sudo pacman -S ruby # Arch
+# Clone the project, copy (and fill) the example config file
+bundle install
+rackup # for development, take a look to thin or unicorn for production
 ```
 
-### Dependencies
-#### Using apt-get (Debian)
-
-You just have to install the following :
-
 ```
-apt-get install ruby ruby-sinatra ruby-sinatra-contrib ruby-sequel # + adapter : ruby-sqlite3, ruby-mysql2, ruby-pg
-```
+-- Database initialization
+CREATE TABLE domains(
+  id INT PRIMARY KEY NOT NULL,
+  name CHAR(50) NOT NULL
+);
 
-#### Using Rubygems (any distribution)
+CREATE TABLE users(
+  id INT PRIMARY KEY NOT NULL,
+  mail CHAR(50) NOT NULL,
+  password CHAR(50) NOT NULL
+);
 
-You just have to install the following :
-
-```
-gem install sinatra sinatra-contrib rack sequel # + adapter : sqlite3, mysql2, pg
-```
-
-### Initialize the database
-
-Please configure the `database` parameters in the `config.yml` file and run the
-following script from the root directory of the app. The script creates the tables
-and fields of the database.
-
-```
-ruby scripts/initialize_database.rb
+CREATE TABLE aliases(
+  id INT PRIMARY KEY NOT NULL,
+  source CHAR(50) NOT NULL,
+  destination CHAR(50) NOT NULL
+);
 ```
 
-### Deployment
-
-On your computer, you just have to run the `rackup` command at the root
-directory of this repo. For production, you'll have to setup a thin or
-unicorn worker. Please take a look to
-[the documentation](http://recipes.sinatrarb.com/p/deployment) on the subject.
-
-*PS : `thin` or `unicorn` are both great. Passenger is way too heavy. It is also
-possible to deploy via `FastCGI`. Note that `unicorn` is packaged for Debian.*

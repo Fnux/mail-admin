@@ -1,7 +1,3 @@
-##########
-# Models #
-##########
-
 class Domain < Sequel::Model(:domains)
   # id | name
 end

@@ -2,12 +2,9 @@ source 'https://rubygems.org'
 
 gem 'sinatra'
 gem 'sinatra-contrib'
-gem 'rack', '~> 1.6.4'
+gem 'rack'
 gem 'sequel'
 
-group :development do
-  gem 'sqlite3'
-end
-group :production do
-  gem 'pgsql'
-end
+gem 'sqlite3', :group => :sqlite
+gem 'pgsql', :group => :postgres
+gem 'mysql', :group => :mysql

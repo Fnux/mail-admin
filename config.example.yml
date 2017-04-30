@@ -1,0 +1,10 @@
+# Admin users, separeted by `;`
+admins: admin1@lamb.da;admin2@lamb.da
+
+# Session secret
+secret: myawesomesecret
+
+# Database configuration
+database:
+   adapter: sqlite3 # postgres, mysql
+   database: app.db

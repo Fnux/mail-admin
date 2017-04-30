@@ -1,30 +1,30 @@
 <h2 style="margin-top:0">Manage Domains - <a href="/panel/admin/">Back to admin index &crarr;</a></h2>
 
 <table class="full">
-   <thead>
+  <thead>
+    <tr>
+      <th style="width:5%;">#</th>
+      <th style="width:75%;">Name</th>
+      <th style="width:20%;">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @domains.each do |domain| %>
       <tr>
-         <th style="width:5%;">#</th>
-         <th style="width:75%;">Name</th>
-         <th style="width:20%;">Actions</th>
+        <td><%= domain.id %></td>
+        <td><%= domain.name %></td>
+        <td>
+          <a href="/panel/admin/domains/edit/<%= domain.id %>">Edit</a> /
+          <a href="/panel/admin/domains/destroy/<%= domain.id %>">Delete</a>
+        </td>
       </tr>
-   </thead>
-   <tbody>
-      <% @domains.each do |domain| %>
-      <tr>
-         <td><%= domain.id %></td>
-         <td><%= domain.name %></td>
-         <td>
-            <a href="/panel/admin/domains/edit/<%= domain.id %>">Edit</a> /
-            <a href="/panel/admin/domains/destroy/<%= domain.id %>">Delete</a>
-         </td>
-      </tr>
-      <% end %>
-   </tbody>
+    <% end %>
+  </tbody>
 </table>
 
 <hr />
 
 <form action="/panel/admin/domains/create" method="post">
-    <input type="text" name="name" class="" placeholder="New domain name." />
-    <button type="submit" class="">Create domain &raquo;</button>
+  <input type="text" name="name" class="" placeholder="New domain name." />
+  <button type="submit" class="">Create domain &raquo;</button>
 </form>
