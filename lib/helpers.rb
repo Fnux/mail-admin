@@ -10,7 +10,7 @@ module SessionHelpers
 
   # Protect a page
   def protected!(admin_required)
-    if signed_in? && (!admin_required || is_admin?(session_user))
+    if signed_in? && (!admin_required || is_admin?(get_session_user))
       true
     else
       redirect '/'
@@ -38,7 +38,7 @@ module SessionHelpers
   # Check user IDs
   def check_user(mail, password)
     user = User.where(:mail => mail).first
-    if !user.nil? && user.password == params[:password].crypt('$6$' + CONFIG['salt'])
+    if !user.nil? && user.password == password.crypt('$6$' + CONFIG['salt'])
       true
     else
       false

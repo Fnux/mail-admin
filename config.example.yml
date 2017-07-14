@@ -4,6 +4,9 @@ admins: admin1@lamb.da;admin2@lamb.da
 # Session secret
 secret: myawesomesecret
 
+# Password encryption (SHA-512) salt
+salt: ""
+
 # Database configuration
 database:
    adapter: sqlite3 # postgres, mysql

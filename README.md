@@ -24,18 +24,18 @@ rackup # for development, take a look to thin or unicorn for production
 ```
 -- Database initialization
 CREATE TABLE domains(
-  id INT PRIMARY KEY NOT NULL,
+  id INTEGER PRIMARY KEY NOT NULL,
   name CHAR(50) NOT NULL
 );
 
 CREATE TABLE users(
-  id INT PRIMARY KEY NOT NULL,
+  id INTEGER PRIMARY KEY NOT NULL,
   mail CHAR(50) NOT NULL,
   password CHAR(50) NOT NULL
 );
 
 CREATE TABLE aliases(
-  id INT PRIMARY KEY NOT NULL,
+  id INTEGER PRIMARY KEY NOT NULL,
   source CHAR(50) NOT NULL,
   destination CHAR(50) NOT NULL
 );
