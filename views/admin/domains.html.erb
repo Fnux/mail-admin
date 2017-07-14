@@ -1,4 +1,4 @@
-<h2 style="margin-top:0">Manage Domains - <a href="/panel/admin/">Back to admin index &crarr;</a></h2>
+<h2 style="margin-top:0">Manage Domains - <a href="<%= url_for('/admin/') %>">Back to admin index &crarr;</a></h2>
 
 <table class="full">
   <thead>
@@ -14,8 +14,8 @@
         <td><%= domain.id %></td>
         <td><%= domain.name %></td>
         <td>
-          <a href="/panel/admin/domains/edit/<%= domain.id %>">Edit</a> /
-          <a href="/panel/admin/domains/destroy/<%= domain.id %>">Delete</a>
+          <a href="<%= url_for("/admin/domains/edit/#{domain.id}") %>">Edit</a> /
+            <a href="<%= url_for("/admin/domains/destroy/#{domain.id}") %>">Delete</a>
         </td>
       </tr>
     <% end %>
@@ -24,7 +24,7 @@
 
 <hr />
 
-<form action="/panel/admin/domains/create" method="post">
+<form action="<%= url_for("/admin/domains/create") %>" method="post">
   <input type="text" name="name" class="" placeholder="New domain name." />
   <button type="submit" class="">Create domain &raquo;</button>
 </form>

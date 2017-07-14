@@ -1,6 +1,6 @@
-<h2 style="margin-top:0">Edit user : <%= @alias.source %> - <a href="/panel/admin/aliasess">Back to aliases &crarr;</a></h2>
+<h2 style="margin-top:0">Edit user : <%= @alias.source %> - <a href="<%= url_for('/admin/aliases') %>">Back to aliases &crarr;</a></h2>
 
-<form action="/panel/admin/aliases/edit/<%= @alias.id %>" method="post">
+<form action="<%= url_for("/admin/aliases/edit/#{@alias.id}") %>" method="post">
   <input type="text" name="source" class="" placeholder="Source", value="<%= @alias.source %>" />
   <input type="text" name="destination" class="" placeholder="Destination", value="<%= @alias.destination %>" />
   <button type="submit" class="">Update &raquo;</button>

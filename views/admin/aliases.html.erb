@@ -1,4 +1,4 @@
-<h2 style="margin-top:0">Manage Aliases - <a href="/panel/admin/">Back to admin index &crarr;</a></h2>
+<h2 style="margin-top:0">Manage Aliases - <a href="<%= url_for('/admin/') %>">Back to admin index &crarr;</a></h2>
 
 <table class="full" >
   <thead>
@@ -16,8 +16,8 @@
         <td><%= forward.source %></td>
         <td><%= forward.destination %></td>
         <td>
-          <a href="/panel/admin/aliases/edit/<%= forward.id %>">Edit</a> /
-          <a href="/panel/admin/aliases/destroy/<%= forward.id %>">Delete</a>
+          <a href="<%= url_for("/admin/aliases/edit/#{forward.id}") %>">Edit</a> /
+          <a href="<%= url_for("/admin/aliases/destroy/#{forward.id}") %>">Delete</a>
         </td>
       </tr>
     <% end %>
@@ -26,7 +26,7 @@
 
 <hr />
 
-<form action="/panel/admin/aliases/create" method="post">
+<form action="<%= url_for('/admin/aliases/create') %>" method="post">
   <input type="text" name="source" class="" placeholder="Source" />
   <input type="text" name="destination" class="" placeholder="Destination" />
   <button type="submit" class="">New alias &raquo;</button>

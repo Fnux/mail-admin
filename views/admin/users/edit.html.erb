@@ -1,6 +1,6 @@
-<h2 style="margin-top:0">Edit user : <%= @user.mail %> - <a href="/panel/admin/users">Back to domains &crarr;</a></h2>
+<h2 style="margin-top:0">Edit user : <%= @user.mail %> - <a href="<%= url_for('/admin/users') %>">Back to domains &crarr;</a></h2>
 
-<form action="/panel/admin/users/edit/<%= @user.id %>" method="post">
+<form action="<%= url_for("/admin/users/edit/#{@user.id}") %>" method="post">
   <input type="text" name="mail" class="" placeholder="Email Adress", value="<%= @user.mail %>" />
   <input type="password" name="password" class="" placeholder="Password" />
   <button type="submit" class="">Update &raquo;</button>

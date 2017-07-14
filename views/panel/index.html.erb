@@ -1,6 +1,6 @@
 <div class="panel-container">
   <div class="panel-form">
-    <form action="/panel/password" method="post">
+    <form action="<%= url_for('/panel/password') %>" method="post">
       <input type="password" name="current-password" class="full" placeholder="Current password" />
       <hr />
       <input type="password" name="new-password" class="full" placeholder="New password" />
@@ -11,9 +11,9 @@
   <div class="panel-note">
     <p>You are authenticated as <i><%= @user.mail %></i>.</p>
     <p>If there is anything wrong, please contact your system administrator.</p>
-    <a href="/logout" class="">Logout &raquo;</a>
+    <a href="<%= url_for('/logout') %>" class="">Logout &raquo;</a>
     <% if @admin %>
-      /  <a href="/panel/admin/" class="">Administration Panel &raquo;</a>
+      /  <a href="<%= url_for('/admin/') %>" class="">Administration Panel &raquo;</a>
     <% end %>
   </div>
 </div>

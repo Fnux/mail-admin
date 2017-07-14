@@ -1,4 +1,4 @@
-<h2 style="margin-top:0">Manage Users - <a href="/panel/admin/">Back to admin index &crarr;</a></h2>
+<h2 style="margin-top:0">Manage Users - <a href="<%= url_for('/admin/') %>">Back to admin index &crarr;</a></h2>
 
 <table class="full">
   <thead>
@@ -14,8 +14,8 @@
         <td><%= user.id %></td>
         <td><%= user.mail %></td>
         <td>
-          <a href="/panel/admin/users/edit/<%= user.id %>">Edit</a> /
-          <a href="/panel/admin/users/destroy/<%= user.id %>">Delete</a>
+          <a href="<%= url_for("/admin/users/edit/#{user.id}") %>">Edit</a> /
+          <a href="<%= url_for("/admin/users/destroy/#{user.id}") %>">Delete</a>
         </td>
       </tr>
     <% end %>
@@ -24,7 +24,7 @@
 
 <hr />
 
-<form action="/panel/admin/users/create" method="post">
+<form action="<%= url_for('/admin/users/create') %>" method="post">
   <input type="text" name="mail" class="" placeholder="Email Adress" />
   <input type="password" name="password" class="" placeholder="Password" />
   <button type="submit" class="">Create User &raquo;</button>

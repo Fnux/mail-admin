@@ -1,6 +1,9 @@
 # Admin users, separeted by `;`
 admins: admin1@lamb.da;admin2@lamb.da
 
+# URL prefix
+prefix: ""
+
 # Session secret
 secret: myawesomesecret
 

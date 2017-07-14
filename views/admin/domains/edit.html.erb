@@ -1,0 +1,6 @@
+<h2 style="margin-top:0">Edit domain : <%= @domain.name %> - <a href="<%= url_for('/admin/domains') %>">Back to domains &crarr;</a></h2>
+
+<form action="<%= url_for("/admin/domains/edit/#{@domain.id}") %>" method="post">
+  <input type="text" name="name" class="" placeholder="Domain name" value="<%= @domain.name %>"/>
+  <button type="submit" class="">Update &raquo;</button>
+</form>
