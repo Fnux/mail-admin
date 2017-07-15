@@ -13,7 +13,7 @@ module SessionHelpers
     if signed_in? && (!admin_required || is_admin?(get_session_user))
       true
     else
-      redirect '/'
+      redirect (CONFIG['prefix'] + '/')
     end
   end
 

@@ -23,7 +23,7 @@ else
                       :host => CONFIG['database']['server'], 
                       :database => CONFIG['database']['database'],
                       :user => CONFIG['database']['user'],
-                      :pasword => CONFIG['database']['password'])
+                      :password => CONFIG['database']['password'])
 end
 
 # Set views directory
